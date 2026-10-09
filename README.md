@@ -1,68 +1,76 @@
-# Engenharia de Requisitos com GenAI — Sistema de Gestão de Eventos (Eventus)
+# Requirements Engineering with GenAI - Event Management System (Eventus)
 
-Atividade prática da disciplina de Engenharia de Requisitos (Pós-graduação em IA). O objetivo foi analisar o documento de elicitação fornecido (sistema Eventus) e, com apoio de IA Generativa, identificar requisitos, regras de negócio, lacunas e ambiguidades, além de selecionar e produzir os artefatos de especificação mais adequados.
+Practical assignment for the Requirements Engineering course (AI postgraduate program). The goal was to analyze the provided elicitation document (the Eventus system) and, with the support of Generative AI, identify requirements, business rules, gaps and ambiguities, and select and produce the most suitable specification artifacts.
 
-## Estrutura do repositório
+> The original course material and the interviews were written in Portuguese; the artifacts in this repository are in English.
+
+## Repository structure
 
 ```
-engenharia-requisitos-genai/
-├── analise/
-│   ├── requisitos-funcionais.md
-│   ├── requisitos-nao-funcionais.md
-│   ├── regras-de-negocio.md
-│   └── lacunas-e-ambiguidades.md
-├── especificacao/
-│   ├── historias-de-usuario.md
-│   ├── casos-de-uso.md
-│   ├── criterios-de-aceitacao.md
-│   └── glossario.md
+engenharia-requisitos-gena/
+├── analysis/
+│   ├── functional-requirements.md
+│   ├── non-functional-requirements.md
+│   ├── business-rules.md
+│   └── gaps-and-ambiguities.md
+├── specification/
+│   ├── user-stories.md
+│   ├── use-cases.md
+│   ├── acceptance-criteria.md
+│   └── glossary.md
+├── CONTRIBUTING.md
+├── LICENSE
 └── README.md
 ```
 
-## 1. Artefatos de especificação escolhidos
+## 1. Chosen specification artifacts
 
-- **Histórias de Usuário**
-- **Casos de Uso**
-- **Critérios de Aceitação (Given/When/Then)**
-- **Glossário de Domínio**
+- **User Stories**
+- **Use Cases**
+- **Acceptance Criteria (Given/When/Then)**
+- **Domain Glossary**
 
-## 2. Por que esses artefatos foram considerados os mais adequados
+## 2. Why these artifacts were considered the most suitable
 
-O sistema envolve **cinco perfis de stakeholders** com necessidades bem distintas (participante, organizador, equipe financeira, palestrante, equipe de TI), extraídas de falas diretas em entrevista — isso favorece **Histórias de Usuário**, que preservam a voz de cada stakeholder no formato "Como [persona], eu quero [ação], para que [benefício]".
+The system involves **five stakeholder profiles** with very different needs (participant, organizer, finance team, speaker, IT team), taken from direct statements in the interviews - this favors **User Stories**, which preserve each stakeholder's voice in the format "As a [persona], I want [action], so that [benefit]".
 
-Vários fluxos são condicionais e multi-ator (inscrição com pagamento, cancelamento com regras variáveis por evento, lista de espera, reembolso) — histórias de usuário sozinhas não detalham exceções e decisões suficientemente. Por isso foram elaborados **Casos de Uso**, que descrevem fluxo principal, fluxos alternativos e — de forma deliberada — marcam explicitamente onde falta uma regra de negócio definida, em vez de presumir um comportamento.
+Several flows are conditional and multi-actor (registration with payment, cancellation with rules that vary per event, waitlist, refund) - user stories alone do not detail exceptions and decisions enough. For that reason **Use Cases** were written, describing the main flow, alternative flows and - deliberately - explicitly marking where a business rule is missing, instead of presuming a behavior.
 
-Os **Critérios de Aceitação** em Dado/Quando/Então complementam as histórias tornando cada comportamento verificável e testável, e também servem para sinalizar, cenário a cenário, o que ainda depende de validação com os stakeholders (marcado como `[A VALIDAR]`).
+The **Acceptance Criteria** in Given/When/Then complement the stories by making each behavior verifiable and testable, and also flag, scenario by scenario, what still depends on validation with the stakeholders (marked `[TO VALIDATE]`).
 
-O **Glossário** foi incluído porque a elicitação usa "evento", "workshop" e "atividade" de forma parcialmente intercambiável — um risco real de ambiguidade entre times técnicos e de negócio. O glossário também formaliza os *status* de inscrição e pagamento, hoje implícitos nas falas dos stakeholders.
+The **Glossary** was included because the elicitation uses "event", "workshop" and "activity" partially interchangeably - a real ambiguity risk between technical and business teams. The glossary also formalizes the registration and payment *statuses*, which are currently implicit in the stakeholders' statements.
 
-Optou-se por **não produzir** um documento de especificação estilo IEEE-SRS completo, diagramas BPMN ou protótipos de interface neste momento — justificativa na seção 5.
+It was decided **not to produce** a full IEEE-SRS style specification document, BPMN diagrams or interface prototypes at this point - rationale in section 5.
 
-## 3. Ferramenta de GenAI utilizada
+## 3. GenAI tool used
 
-Foi utilizado o **Claude** (Anthropic), no ambiente Claude (Cowork).
+**Claude** (Anthropic) was used, in the Claude (Cowork) environment.
 
-## 4. Como a IA apoiou as diferentes etapas da atividade
+## 4. How the AI supported the different stages of the assignment
 
-1. **Estruturação do material bruto** — o texto das entrevistas foi organizado em Requisitos Funcionais, Requisitos Não Funcionais, Regras de Negócio e Lacunas/Ambiguidades, referenciando cada item à fala de origem.
-2. **Recomendação de artefatos** — a partir do perfil do projeto (múltiplos atores, fluxos condicionais, terminologia ambígua), a IA sugeriu como opções histórias de usuário, casos de uso, critérios de aceitação e glossário, explicando o motivo de cada um antes de qualquer redação.
-3. **Elaboração dos artefatos** — a IA redigiu as primeiras versões dos quatro artefatos escolhidos, sempre referenciando de volta o RF/RN de origem (rastreabilidade).
-4. **Sinalização ativa de lacunas** — em cada ponto do material original marcado como "não definido" (seção 4 do documento de elicitação), a IA foi instruída a **não presumir uma resposta plausível**, e sim marcar o trecho como ponto em aberto (`[PONTO EM ABERTO]` nos casos de uso, `[A VALIDAR]` nos critérios de aceitação), citando a lacuna correspondente.
+1. **Structuring the raw material** - the interview text was organized into Functional Requirements, Non-Functional Requirements, Business Rules and Gaps/Ambiguities, referencing each item to the statement it came from.
+2. **Artifact recommendation** - based on the project profile (multiple actors, conditional flows, ambiguous terminology), the AI suggested user stories, use cases, acceptance criteria and a glossary as options, explaining the reason for each before any writing.
+3. **Writing the artifacts** - the AI drafted the first versions of the four chosen artifacts, always referencing back the source FR/BR (traceability).
+4. **Active flagging of gaps** - at every point of the original material marked as "not defined" (section 4 of the elicitation document), the AI was instructed **not to presume a plausible answer**, but to mark the passage as an open point (`[OPEN POINT]` in use cases, `[TO VALIDATE]` in acceptance criteria), citing the corresponding gap.
 
-## 5. Sugestões aproveitadas, modificadas ou descartadas
+## 5. AI suggestions accepted, modified or discarded
 
-| Sugestão da IA | Decisão | Justificativa |
-|-----------------|---------|----------------|
-| Separar o material bruto em RF, RNF, Regras de Negócio e Lacunas antes de qualquer redação de artefato | **Aproveitada** | Deu rastreabilidade clara: cada história/caso de uso remete à origem. |
-| Combinação Histórias de Usuário + Casos de Uso + Critérios de Aceitação + Glossário | **Aproveitada** | Cobre tanto a voz do stakeholder quanto os fluxos condicionais complexos, sem exigir artefatos pesados demais para o nível de definição atual do projeto. |
-| Preencher os Requisitos Não Funcionais com valores plausíveis (ex.: "tempo de resposta < 2s", "99,9% de disponibilidade") | **Descartada** | O próprio documento de elicitação afirma que nenhum RNF foi levantado. Assumir números criaria uma falsa sensação de requisito validado. Optou-se por documentar RNFs apenas como *candidatos a validar* (`requisitos-nao-funcionais.md`). |
-| Definir automaticamente critérios de reembolso, prazo de cancelamento, mecânica de lista de espera e regra de emissão de certificado | **Descartada** | São lacunas explicitamente registradas pelos próprios entrevistadores (seção 4 do documento). Preencher essas lacunas com respostas "razoáveis" da IA correria o risco de a equipe de desenvolvimento tratar uma suposição como decisão validada. Optou-se por manter os pontos em aberto, sinalizados em todos os artefatos. |
-| Gerar um documento de especificação único no padrão IEEE 830 (SRS) | **Descartada** | Com 9 lacunas e pelo menos 4 regras de negócio pendentes, um SRS completo passaria uma falsa impressão de que a especificação está fechada. Histórias de usuário e casos de uso comunicam o mesmo conteúdo com mais transparência sobre o que ainda está incompleto. |
-| Criar diagramas BPMN dos fluxos | **Descartada** | Exigiria ferramenta gráfica especializada e um nível de definição de processo que o material ainda não sustenta; o diagrama Mermaid (ER) já cobre a necessidade de visão estrutural neste estágio. |
-| Produzir protótipos de interface (wireframes) | **Descartada por ora** | Lacunas de alta prioridade (L-01, L-06, L-07, L-08) afetam diretamente telas de inscrição/cancelamento; prototipar antes dessas definições geraria retrabalho. Fica como próximo passo após validação com stakeholders. |
-| Detalhar campos de dados pessoais visíveis ao palestrante (UC-06) | **Modificada** | A IA inicialmente sugeriu uma lista de campos (nome, e-mail, empresa). Optou-se por não fixar esses campos, tratando a definição como pendente de análise de privacidade/LGPD (L-08), já que a decisão envolve risco de exposição de dados pessoais. |
-| Regra de conflito de horário (RN-05) redigida a partir das duas falas do organizador e do participante | **Modificada** | A IA inicialmente tratou as duas falas ("workshops simultâneos no mesmo horário" e "inscrever-se em vários workshops no mesmo dia") como a mesma regra. Na revisão, elas foram separadas: uma trata da grade de programação (trilhas paralelas), outra do impedimento de inscrição conflitante para o mesmo participante — registrado em `lacunas-e-ambiguidades.md` (A-02). |
+| AI suggestion | Decision | Rationale |
+|---------------|----------|-----------|
+| Separate the raw material into FR, NFR, Business Rules and Gaps before writing any artifact | **Accepted** | Gave clear traceability: every story/use case points back to its origin. |
+| Combination of User Stories + Use Cases + Acceptance Criteria + Glossary | **Accepted** | Covers both the stakeholder's voice and the complex conditional flows, without requiring artifacts too heavy for the project's current level of definition. |
+| Fill in the Non-Functional Requirements with plausible values (e.g. "response time < 2s", "99.9% availability") | **Discarded** | The elicitation document itself states that no NFR was gathered. Assuming numbers would create a false sense of a validated requirement. NFRs were documented only as *candidates to validate* (`non-functional-requirements.md`). |
+| Automatically define refund criteria, cancellation deadline, waitlist mechanics and certificate issuing rule | **Discarded** | These are gaps explicitly recorded by the interviewers themselves (section 4 of the document). Filling them with "reasonable" AI answers would risk the development team treating an assumption as a validated decision. The open points were kept and flagged in all artifacts. |
+| Generate a single specification document in the IEEE 830 (SRS) standard | **Discarded** | With 9 gaps and at least 4 pending business rules, a full SRS would give the false impression that the specification is closed. User stories and use cases convey the same content with more transparency about what is still incomplete. |
+| Create BPMN diagrams of the flows | **Discarded** | It would require a specialized graphical tool and a level of process definition that the material does not yet support; the Mermaid (ER) diagram already covers the need for a structural view at this stage. |
+| Produce interface prototypes (wireframes) | **Discarded for now** | High-priority gaps (G-01, G-06, G-07, G-08) directly affect the registration/cancellation screens; prototyping before these definitions would generate rework. It remains a next step after validation with stakeholders. |
+| Detail the personal data fields visible to the speaker (UC-06) | **Modified** | The AI initially suggested a list of fields (name, email, company). It was decided not to fix these fields, treating the definition as pending a privacy/data protection (LGPD) analysis (G-08), since the decision involves a risk of exposing personal data. |
+| Schedule conflict rule (BR-05) written from the organizer's and participant's two statements | **Modified** | The AI initially treated the two statements ("workshops at the same time" and "register for several workshops on the same day") as the same rule. On review they were separated: one is about the schedule (parallel tracks), the other about preventing conflicting registration for the same participant - recorded in `gaps-and-ambiguities.md` (A-02). |
 
-## 6. Próximos passos sugeridos
+## 6. Suggested next steps
 
-Validar com os stakeholders as 9 lacunas listadas em `analise/lacunas-e-ambiguidades.md`, com prioridade para as que bloqueiam funcionalidades centrais (L-01 cancelamento, L-02 reembolso, L-06 reserva de vaga, L-07 conflito de horário) antes de avançar para protótipos de interface ou modelagem de dados detalhada.
+Validate with the stakeholders the 9 gaps listed in `analysis/gaps-and-ambiguities.md`, prioritizing those that block core features (G-01 cancellation, G-02 refund, G-06 spot reservation, G-07 schedule conflict) before moving on to interface prototypes or detailed data modeling.
+
+## License
+
+[MIT](LICENSE)
